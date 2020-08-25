@@ -1,21 +1,25 @@
 {
   "name": "unix-pipe",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "",
   "main": "main.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "test": "node-gyp rebuild && nodeunit test",
+    "pretest": "node-gyp rebuild",
+    "test": "nodeunit test",
     "install": "node-gyp rebuild"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mattnibs/node-unix-pipe.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": {
+    "name": "Matthew Nibecker",
+    "email": "hello@mattnibecker.com"
+  },
+  "license": "BSD-3-Clause",
   "gypfile": true,
   "bugs": {
     "url": "https://github.com/mattnibs/node-unix-pipe/issues"
@@ -27,5 +31,6 @@
   "devDependencies": {
     "node-gyp": "^7.1.0",
     "nodeunit": "^0.11.3"
-  }
+  },
+  "os" : [ "darwin", "linux" ]
 }
