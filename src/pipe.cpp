@@ -7,6 +7,7 @@
 #include <unistd.h>
 #include <errno.h>
 #include <string>
+#include <fcntl.h>
 
 #include "napi.h"
 
@@ -20,6 +21,16 @@ Napi::Value PipeSync(const Napi::CallbackInfo& args)
 
 		return env.Undefined();
 	}
+    if (fcntl(pipefd[0], F_SETFD, FD_CLOEXEC) != 0) {
+		Napi::TypeError::New(env, std::string("fcntl():") + strerror(errno)).ThrowAsJavaScriptException();
+
+		return env.Undefined();
+    }
+    if (fcntl(pipefd[1], F_SETFD, FD_CLOEXEC) != 0) {
+		Napi::TypeError::New(env, std::string("fcntl():") + strerror(errno)).ThrowAsJavaScriptException();
+
+		return env.Undefined();
+    }
     Napi::Object obj = Napi::Object::New(env);
     obj.Set("readfd", pipefd[0]);
     obj.Set("writefd", pipefd[1]);

@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "nodeunit test",
+    "test": "node-gyp rebuild && nodeunit test",
     "install": "node-gyp rebuild"
   },
   "repository": {

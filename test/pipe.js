@@ -9,6 +9,7 @@ function checkPipeSync(obj, test) {
 	test.ok(rstat.isFIFO());
 	var wstat = fs.fstatSync(obj.writefd);
 	test.ok(wstat.isFIFO());
+  console.log(rstat)
 
   const msg = "testmsg";
   const buf = Buffer.alloc(msg.length);
