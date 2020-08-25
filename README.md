@@ -1,6 +1,10 @@
+POSIX pipe(2) for NodeJS
+
 ## Installation
 
-TODO
+```
+npm install node-pipe
+```
 
 ## Example
 
